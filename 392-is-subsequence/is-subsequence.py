@@ -7,6 +7,6 @@ class Solution:
             if subsequence <= len(s) -1:
                 print(s[subsequence])
                 if s[subsequence]==t[i]:
-
                     subsequence+=1
+        
         return  subsequence == len(s) 
