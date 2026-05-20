@@ -1,17 +1,16 @@
 class Solution:
     def findThePrefixCommonArray(self, A: list, B: list) -> list:
         n = len(A)
-        prefix_common_array = [0] * n
-
-        for current_index in range(n):
-            common_count = 0
-
-            for a_index in range(current_index + 1):
-                for b_index in range(current_index + 1):
-
-                    if A[a_index] == B[b_index]:
-                        common_count += 1
-                        break
-            prefix_common_array[current_index] = common_count
-
-        return prefix_common_array
+        res = [0] * n
+        seen = [0] * (n + 1)
+        
+        for i in range(n):
+            seen[0] += seen[A[i]]
+            seen[A[i]] = 1
+            
+            seen[0] += seen[B[i]]
+            seen[B[i]] = 1
+            
+            res[i] = seen[0]
+            
+        return res
