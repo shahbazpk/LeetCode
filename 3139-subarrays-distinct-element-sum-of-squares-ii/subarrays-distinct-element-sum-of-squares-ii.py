@@ -19,3 +19,4 @@ class Solution:
                 i += i & -i
             last[x] = r
         return ans % (10**9 + 7)
+
